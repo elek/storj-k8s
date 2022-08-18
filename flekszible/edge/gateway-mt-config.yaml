@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-mt
+data:
+  STORJ_CONSOLE_EXTERNAL_ADDRESS: http://satellite-api:8888
+  STORJ_AUTH_BASE_URL: http://authservice-0.authservice.default.svc.local:8888
+  STORJ_AUTH_TOKEN: super-secret
+  STORJ_AUTH_URL: http://authservice-0.authservice.default.svc.local:8888
+  STORJ_DEBUG_ADDR: 0.0.0.0:11111
+  STORJ_DEFAULTS: dev
+  STORJ_LOG_LEVEL: debug
+  STORJ_METRICS_APP_SUFFIX: sim
+  STORJ_SERVER_ADDRESS: 0.0.0.0:9999
+  STORJ_WAIT_FOR_SATELLITE: "true"

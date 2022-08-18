@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: linksharing
+  name: linksharing
+spec:
+  serviceName: linksharing
+  replicas: 1
+  selector:
+    matchLabels:
+      app: linksharing
+  template:
+    metadata:
+      labels:
+        app: linksharing
+    spec:
+      containers:
+        - args:
+            - linksharing
+            - run
+            - --defaults=dev
+          envFrom:
+            - configMapRef:
+                name: linksharing
+          image: ghcr.io/elek/storj-edge:1.19.0
+          name: linksharing
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always
+

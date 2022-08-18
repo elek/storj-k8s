@@ -1,0 +1,32 @@
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: authservice
+  name: authservice
+spec:
+  serviceName: authservice
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authservice
+  template:
+    metadata:
+      labels:
+        app: authservice
+    spec:
+      containers:
+      - args:
+        - authservice
+        - run
+        - --defaults=dev
+        envFrom:
+        - configMapRef:
+            name: authservice
+        image: ghcr.io/elek/storj-edge:1.19.0
+        name: authservice
+        ports:
+        - containerPort: 8888
+        - containerPort: 6666
+      restartPolicy: Always

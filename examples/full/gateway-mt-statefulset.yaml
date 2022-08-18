@@ -1,0 +1,31 @@
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: gateway-mt
+  name: gateway-mt
+spec:
+  serviceName: gateway-mt
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway-mt
+  template:
+    metadata:
+      labels:
+        app: gateway-mt
+    spec:
+      containers:
+      - args:
+        - gateway-mt
+        - run
+        - --defaults=dev
+        envFrom:
+        - configMapRef:
+            name: gateway-mt
+        image: ghcr.io/elek/storj-edge:1.19.0
+        name: gateway-mt
+        ports:
+        - containerPort: 9999
+      restartPolicy: Always

@@ -1,0 +1,7 @@
+source:
+- path: ../../flekszible
+import:
+- path: cockroach
+- path: redis
+- path: minimal
+- path: edge

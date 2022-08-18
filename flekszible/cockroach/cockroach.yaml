@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: cockroach
+  name: cockroach
+spec:
+  serviceName: cockroach
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cockroach
+  template:
+    metadata:
+      labels:
+        app: cockroach
+    spec:
+      containers:
+        - args:
+            - start-single-node
+            - --insecure
+            - --http-addr
+            - 0.0.0.0:1234
+          image: cockroachdb/cockroach
+          name: cockroach
+          ports:
+            - containerPort: 26257
+      restartPolicy: Always

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: satellite-api
+  name: satellite-api
+spec:
+  serviceName: satellite-api
+  replicas: 1
+  selector:
+    matchLabels:
+      app: satellite-api
+  template:
+    metadata:
+      labels:
+        app: satellite-api
+    spec:
+      containers:
+        - args:
+            - satellite
+            - run
+            - api
+            - --defaults=dev
+            - --identity-dir=/var/lib/storj/identities/1
+          envFrom:
+            - configMapRef:
+                name: satellite-api
+       
+          image: ghcr.io/elek/storj:1.45.3
+          name: satellite-api
+          ports:
+            - containerPort: 7777
+            - containerPort: 10000
+          resources: {}
+      restartPolicy: Always
+

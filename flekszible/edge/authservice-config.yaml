@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authservice
+data:
+  STORJ_ALLOWED_SATELLITES: 12whfK1EDvHJtajBiAUeajQLYcWqxcQmdYQU5zX5cCf6bAxfgu4@satellite-api:7777
+  STORJ_AUTH_TOKEN: super-secret
+  STORJ_DEBUG_ADDR: 0.0.0.0:11111
+  STORJ_DEFAULTS: dev
+  STORJ_ENDPOINT: http://gateway-mt-0.gateway-mt.default.svc.svc.local:9999
+  STORJ_KV_BACKEND: memory://
+  STORJ_LISTEN_ADDR: 0.0.0.0:8888
+  STORJ_LOG_LEVEL: debug
+  STORJ_METRICS_APP_SUFFIX: sim
+  STORJ_ROLE: authservice
+  STORJ_WAIT_FOR_SATELLITE: "true"

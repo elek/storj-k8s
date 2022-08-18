@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: linksharing
+data:
+  STORJ_AUTH_SERVICE_BASE_URL: http://authservice-0.authservice.default.svc.local:8888
+  STORJ_AUTH_SERVICE_TOKEN: super-secret
+  STORJ_DEBUG_ADDR: 0.0.0.0:11111
+  STORJ_PUBLIC_URL: http://linksharing:9090,http://localhost:9090
+  STORJ_WAIT_FOR_SATELLITE: "true"
